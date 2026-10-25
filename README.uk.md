@@ -14,8 +14,8 @@
 ## Передумови
 
 Будь-який курс програмування. JavaScript знати не обов'язково, але синтаксис у курсі
-не вивчається: перед Lab 1 пройдіть частину 1 [javascript.info](https://javascript.info/)
-(є українською: [uk.javascript.info](https://uk.javascript.info/)).
+не вивчається: перед Lab 1 пройдіть частину 1 [javascript.info](https://javascript.info/js)
+(є українською: [uk.javascript.info](https://uk.javascript.info/js)).
 
 ## Про що курс
 
@@ -33,7 +33,7 @@ TypeScript, а V8, збирач сміття й тести перестають 
 
 | Тиждень | Що |
 |---|---|
-| 0 | Самостійно: частина 1 [javascript.info](https://uk.javascript.info/); встановити інструменти ([Tooling standard](README.md#tooling-standard)) |
+| 0 | Самостійно: частина 1 [javascript.info](https://uk.javascript.info/js); встановити інструменти ([Tooling standard](README.md#tooling-standard)) |
 | 1–2 | [Lab 1](lab-01-event-loop-and-game-loop.md) |
 | 3–4 | [Lab 2](lab-02-objects-prototypes-classes.md) |
 | 5–6 | [Lab 3](lab-03-async-javascript.md) |

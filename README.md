@@ -28,13 +28,13 @@ An elective at KAI for 3rd–4th year students of any specialty in the faculty.
 **4 ECTS credits, 16 weeks.**
 
 Prerequisite: any programming course. JavaScript syntax is not taught here: finish
-Part 1 of [javascript.info](https://javascript.info/) before Lab 1.
+Part 1 of [javascript.info](https://javascript.info/js) before Lab 1.
 
 ## Semester plan
 
 | Week | What |
 |---|---|
-| 0 | Self-study: Part 1 of [javascript.info](https://javascript.info/); install the [tooling](#tooling-standard) |
+| 0 | Self-study: Part 1 of [javascript.info](https://javascript.info/js); install the [tooling](#tooling-standard) |
 | 1–2 | [Lab 1](lab-01-event-loop-and-game-loop.md) |
 | 3–4 | [Lab 2](lab-02-objects-prototypes-classes.md) |
 | 5–6 | [Lab 3](lab-03-async-javascript.md) |
