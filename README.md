@@ -1,4 +1,8 @@
-# JavaScript Course — Build a Multiplayer Browser Game, Learn the Language Properly
+# Dogfight: Multiplayer in JavaScript and Node.js
+
+*Build a Multiplayer Browser Game, Learn the Language Properly*
+
+[English](README.md) · [Українською](README.uk.md)
 
 > "Any application that can be written in JavaScript will eventually be written in JavaScript."
 > — Atwood's Law
@@ -14,13 +18,46 @@ A game is the ideal vehicle for JavaScript because it exercises **both runtimes*
 
 By Lab 8 you'll have a portfolio project a recruiter can play in ten seconds, and you'll be able to explain the event loop, prototypes, promises, backpressure, client-server reconciliation, and V8's hidden classes at a whiteboard — which is exactly what a JavaScript interview at a serious company looks like.
 
-This project counts as [Lab 27 — Multiplayer Browser Game](../../labs/lab-27-multiplayer-browser-game.md) of the [main 42-lab program](../../README.md) (and draws on [Lab 13](../../labs/lab-13-physics-sandbox.md) and [Lab 23](../../labs/lab-23-realtime-multiplayer.md)). Everything in the [root README](../../README.md) about portfolio, AI assistants, and the spirit of the program applies here.
+This course grew out of the [42-lab program](https://github.com/rmalkevy/Programming-Practice-Projects).
+
+---
+
+## Who this is for
+
+An elective at KAI for 3rd–4th year students of any specialty in the faculty.
+**4 ECTS credits, 16 weeks.**
+
+Prerequisite: any programming course. JavaScript syntax is not taught here: finish
+Part 1 of [javascript.info](https://javascript.info/) before Lab 1.
+
+## Semester plan
+
+| Week | What |
+|---|---|
+| 0 | Self-study: Part 1 of [javascript.info](https://javascript.info/); install the [tooling](#tooling-standard) |
+| 1–2 | [Lab 1](lab-01-event-loop-and-game-loop.md) |
+| 3–4 | [Lab 2](lab-02-objects-prototypes-classes.md) |
+| 5–6 | [Lab 3](lab-03-async-javascript.md) |
+| 7–8 | [Lab 4](lab-04-node-streams-websockets.md) |
+| 9–10 | [Lab 5](lab-05-realtime-networking.md); **written test** in week 9, after Lab 4 |
+| 11–12 | [Lab 6](lab-06-typescript.md) |
+| 13–14 | [Lab 7](lab-07-engine-performance-testing.md) |
+| 15–16 | [Lab 8](lab-08-ship-it.md); **final showcase** in week 16 |
+
+## Grading
+
+| Part | Points | How it is counted |
+|---|---|---|
+| 8 labs × 10 | 80 | Deliverable checklist done and defended — **8**; with the Stretch — **10**. The defense confirms the points, it does not add them. Fail it and lose 2 (once per lab), with a retake a week later; further retakes carry no extra penalty. The last defense day is in week 16. A lab without a defense does not count. |
+| Written test (week 9, Labs 1–4) | 10 | 45 minutes, on paper, no computer. Predict the output order of a program with timers, promises and `await` — **4**; what `this` is in several call forms, and why — **3**; "the instructor broke it": one changed line in a stream or event-loop snippet, predict the effect — **3**. |
+| Final showcase (week 16) | 10 | A public URL where two strangers play at the same time — **4**; a README with measurements (frame time, message size, GC pauses before/after) — **3**; a demo video under two minutes and questions from the group — **3**. |
+| **Total** | **100** | KAI scale: 90–100 A; 82–89 B; 75–81 C; 67–74 D; 60–66 E; below 60 — fail. To be admitted to the differentiated credit (zalik), all eight labs must be defended. |
 
 ---
 
 ## The project: a real-time multiplayer arena
 
-The reference project in these labs is **`dogfight`**: a top-down 2D arena where players fly ships, shoot, and dodge, in real time, across the internet. You choose the **theme** — WWI biplanes, FPV drones, tanks, spaceships, submarines, wizards on brooms — the physics and networking are the same. Name yours whatever you like.
+The reference project in these labs is **`dogfight`**: a top-down 2D arena where players fly ships, shoot, and dodge, in real time, across the internet. At KAI the course is named after this reference project; the theme of your own game is still yours. You choose the **theme** — WWI biplanes, FPV drones, tanks, spaceships, submarines, wizards on brooms — the physics and networking are the same. Name yours whatever you like.
 
 ```mermaid
 flowchart LR
@@ -48,15 +85,6 @@ flowchart LR
 | 7 | [Engines, Memory, and Tests](lab-07-engine-performance-testing.md) | [notes](lab-07-engine-performance-testing.notes.md) | V8 internals (hidden classes, JIT, GC), DevTools profiling, object pooling, Web Workers, Vitest, fast-check, Playwright | Test suite, GC-hitch-free render loop, bots, a server load test |
 | 8 | [Ship It](lab-08-ship-it.md) | [notes](lab-08-ship-it.notes.md) | Production Node, Docker, CI/CD, WebSockets behind proxies, logging, metrics, abuse limits, PWA | Public URL, two strangers playing, dashboards, README, demo video |
 
-Each lab is **two weeks**. The schedule below assumes a 16-week semester with the final week doubling as the showcase.
-
-| Weeks | Lab | Weeks | Lab |
-|---|---|---|---|
-| 1–2 | Lab 1 | 9–10 | Lab 5 |
-| 3–4 | Lab 2 | 11–12 | Lab 6 |
-| 5–6 | Lab 3 | 13–14 | Lab 7 |
-| 7–8 | Lab 4 | 15–16 | Lab 8 + showcase |
-
 ---
 
 ## What each lab looks like
@@ -80,7 +108,7 @@ Every lab file has the same shape:
 - **One repository, from day one.** Public GitHub repo. Commit as you go. At the end of each lab, **tag it** (`lab-01`, `lab-02`, …) so the history shows the game growing.
 - **README is part of every deliverable.** Each lab adds a section: what you built, the measurement or evidence the lab asked for, what you learned. By Lab 8 that README is your portfolio write-up.
 - **Every lab ends in a 5-minute defense.** You demo the increment and answer 2–3 Reflection questions. You should be able to explain every line you committed.
-- **AI assistants** — follow the [program-wide policy](../../README.md). Use them to learn faster, not to skip understanding. If you can't explain it at the defense, it doesn't count.
+- **AI assistants** are allowed. What is graded is understanding: if you cannot explain a line you committed, it does not count. The defense and the written test are where that is checked.
 - **Vanilla first, frameworks later — and optional.** Labs 1–5 are framework-free on purpose: the event loop, `this` and objects, promises, streams, and WebSockets *are* the curriculum, and frameworks exist to hide them. From Lab 6 you *may* introduce a framework where it earns its place — Svelte, Vue, or React for the lobby/HUD; Fastify or NestJS on the server — if you can articulate what it buys you. The game loop and canvas stay vanilla throughout.
 
 ---
