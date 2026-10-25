@@ -10,7 +10,7 @@ cd practice/lab-04-practice
 npm install        # ставить ws
 ```
 
-Потрібен Node 20+ (перевірити: `node -v`).
+Потрібен Node 22+ (перевірити: `node -v`).
 
 ## Порядок показу
 
