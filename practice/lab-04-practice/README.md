@@ -6,7 +6,7 @@
 ## Перший запуск
 
 ```bash
-cd courses/javascript/practice/lab-04-practice
+cd practice/lab-04-practice
 npm install        # ставить ws
 ```
 
