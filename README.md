@@ -85,6 +85,8 @@ flowchart LR
 | 7 | [Engines, Memory, and Tests](lab-07-engine-performance-testing.md) | [notes](lab-07-engine-performance-testing.notes.md) | V8 internals (hidden classes, JIT, GC), DevTools profiling, object pooling, Web Workers, Vitest, fast-check, Playwright | Test suite, GC-hitch-free render loop, bots, a server load test |
 | 8 | [Ship It](lab-08-ship-it.md) | [notes](lab-08-ship-it.notes.md) | Production Node, Docker, CI/CD, WebSockets behind proxies, logging, metrics, abuse limits, PWA | Public URL, two strangers playing, dashboards, README, demo video |
 
+[`practice/`](practice/) holds demos the instructor runs in class; you may run them too (they are in Ukrainian).
+
 ---
 
 ## What each lab looks like
