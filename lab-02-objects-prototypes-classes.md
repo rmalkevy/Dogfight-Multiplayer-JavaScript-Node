@@ -2,7 +2,7 @@
 
 > "JavaScript doesn't have classes. It has objects that delegate to other objects, and a `class` keyword that politely pretends otherwise."
 
-**Weeks:** 3–4 · **Language focus:** objects as property bags, `class` and one-level `extends`, the four rules of `this`, composition over inheritance, `Map`/`Set` · **Project step:** ships, bullets, obstacles; an entity manager; collisions; shooting and respawn · **Course:** [JavaScript — Build a Multiplayer Game](README.md) · **Previous:** [Lab 01](lab-01-event-loop-and-game-loop.md) · **Notes:** [theory + experiments](lab-02-objects-prototypes-classes.notes.md)
+**Weeks:** 3–4 · **Language focus:** objects as property bags, `class` and one-level `extends`, the four rules of `this`, composition over inheritance, `Map`/`Set` · **Project step:** ships, bullets, obstacles; an entity manager; collisions; shooting and respawn · **Course:** [Dogfight: Multiplayer in JavaScript and Node.js](README.md) · **Previous:** [Lab 01](lab-01-event-loop-and-game-loop.md) · **Notes:** [theory + experiments](lab-02-objects-prototypes-classes.notes.md)
 
 The prototype chain is **one console experiment** so `class` has something to sit on — not a week of theory and not a gate for the game. Constructor functions, both `extends` chains, and drawing `Function.prototype` live in Stretch / Reflection if you have time.
 
