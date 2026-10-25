@@ -50,7 +50,7 @@ Part 1 of [javascript.info](https://javascript.info/) before Lab 1.
 |---|---|---|
 | 8 labs × 10 | 80 | Deliverable checklist done and defended — **8**; with the Stretch — **10**. The defense confirms the points, it does not add them. Fail it and lose 2 (once per lab), with a retake a week later; further retakes carry no extra penalty. The last defense day is in week 16. A lab without a defense does not count. |
 | Written test (week 9, Labs 1–4) | 10 | 45 minutes, on paper, no computer. Predict the output order of a program with timers, promises and `await` — **4**; what `this` is in several call forms, and why — **3**; "the instructor broke it": one changed line in a stream or event-loop snippet, predict the effect — **3**. |
-| Final showcase (week 16) | 10 | A public URL where two strangers play at the same time — **4**; a README with measurements (frame time, message size, GC pauses before/after) — **3**; a demo video under two minutes and questions from the group — **3**. |
+| Final showcase (week 16) | 10 | 5 minutes, as in [Lab 8](lab-08-ship-it.md): 60 s of play with a classmate, one deep dive, questions from the group. A public URL where two strangers play at the same time — **4**; a README with measurements (frame time, message size, GC pauses before/after) — **3**; a demo video (3–5 minutes, as in Lab 8) and questions from the group — **3**. |
 | **Total** | **100** | KAI scale: 90–100 A; 82–89 B; 75–81 C; 67–74 D; 60–66 E; below 60 — fail. To be admitted to the differentiated credit (zalik), all eight labs must be defended. |
 
 ---
