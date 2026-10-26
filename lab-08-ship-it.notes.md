@@ -50,7 +50,7 @@ flowchart TD
 
 Підніми сервер, `kill -TERM <pid>`. **Очікуй:** вихід за ≤5 с, код 0, клієнти бачать close.
 
-У Docker `CMD npm start` часто **не** доносить сигнал до Node (npm посередині). `CMD ["node", "server.js"]` — так. `docker stop` чекає ~10 с, потім kill. Заміряй час.
+У Docker сигнал отримує PID 1. `CMD ["node", "server.js"]` — Node і є PID 1, сигнал доходить. Shell-форма з pipe, `CMD node server.js | tee app.log`, — PID 1 стає `/bin/sh`, і сигнал до Node **не** доходить. `npm start` на сучасному npm сигнал доносить: пересилає його дочірньому Node. `docker stop` шле `SIGTERM` і чекає таймаут (~10 с, задається `docker stop -t`), потім `SIGKILL`, код виходу 137. Заміряй час.
 
 ---
 
@@ -77,7 +77,7 @@ COPY . .
 
 ## 4. Origin
 
-З консолі *іншого* сайту: `new WebSocket('wss://твій-хост/ws')`.
+З тієї ж сторінки на *іншому* порту (інший порт — інший origin), як у [practice](practice/lab-08-practice/): сторінка з `http://localhost:3009` робить `new WebSocket('ws://localhost:3008/ws')`.
 
 Без перевірки origin — **Очікуй:** з’єднання є (будь-хто може відкрити сокет). `verifyClient` / список origin — обов’язковий мінімум, не параноя.
 
@@ -99,7 +99,7 @@ README з URL, 30-секундне демо-відео, теги `lab-01`…`lab
 
 ## На співбесіді
 
-- Graceful shutdown: що робиш на `SIGTERM`. Чому `CMD npm start` у Docker часто ламає сигнали.
+- Graceful shutdown: що робиш на `SIGTERM`. Чому shell-форма `CMD` у Docker може не донести сигнал до Node (PID 1).
 - Чому з HTTPS сторінки не відкрити `ws://`.
 - Де лежать секрети. Чому `.env` у git — погано.
 - Різниця `/health` і метрик. Як зрозуміти, що event loop стоїть.
