@@ -86,6 +86,7 @@ flowchart LR
 | 8 | [Ship It](lab-08-ship-it.md) | [notes](lab-08-ship-it.notes.md) | Production Node, Docker, CI/CD, WebSockets behind proxies, logging, metrics, abuse limits, PWA | Public URL, two strangers playing, dashboards, README, demo video |
 
 [`practice/`](practice/) holds demos the instructor runs in class; you may run them too (they are in Ukrainian).
+All of them have been run on Node 22 and Node 26 (on Node 22 releases before 22.18, the plain `node file.ts` steps in Lab 06 need `--experimental-strip-types`); Docker is needed only for part of Lab 08 and is optional.
 
 ---
 
