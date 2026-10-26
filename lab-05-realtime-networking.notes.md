@@ -1,5 +1,7 @@
 # Notes 05 — Мережа в реальному часі
 
+Досліди для пари: [`practice/lab-05-practice/`](practice/lab-05-practice/)
+
 Поруч із лабою: [lab-05-realtime-networking.md](lab-05-realtime-networking.md).
 
 Консоль або `node`. Без штучної затримки на localhost «все літає» — це брехня. На співбесіді про ігри / realtime питають prediction одним абзацом; про фронт — «навіщо ArrayBuffer».

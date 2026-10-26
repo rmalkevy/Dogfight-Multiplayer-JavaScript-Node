@@ -1,0 +1,34 @@
+<!doctype html>
+<html lang="uk">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Lab 05: детермінізм у браузері</title>
+  <style>
+    body { font: 16px/1.5 system-ui, sans-serif; max-width: 52rem; margin: 2rem auto; padding: 0 1rem; }
+    button { font: inherit; margin: 0 .5rem .5rem 0; padding: .4rem .8rem; cursor: pointer; }
+    pre { background: #f3f3f3; padding: .8rem; min-height: 8rem; white-space: pre-wrap; border-radius: 6px; }
+    @media (prefers-color-scheme: dark) {
+      body { background: #1b1b1b; color: #eee; }
+      pre { background: #2a2a2a; }
+      button { background: #333; color: #eee; border: 1px solid #555; border-radius: 4px; }
+    }
+  </style>
+</head>
+<body>
+  <h1>Lab 05: детермінізм у браузері</h1>
+  <p>
+    Та сама симуляція (<code>sim.js</code>), що в <code>node 05-determinism.js</code>.
+    Порівняй хеші з терміналом: без випадковості і з seed вони мають збігтися.
+    Відкривається подвійним кліком, сервер не потрібен.
+  </p>
+
+  <button id="run">прогнати 1000 кроків</button>
+  <button id="clear">очистити</button>
+
+  <pre id="out"></pre>
+
+  <script src="sim.js"></script>
+  <script src="browser.js"></script>
+</body>
+</html>

@@ -1,0 +1,7 @@
+{
+  "name": "lab-05-practice",
+  "private": true,
+  "type": "module",
+  "description": "Експерименти до Lab 05 (endianness, DataView, JSON проти бінарного знімка, jitter таймера, детермінізм)",
+  "engines": { "node": ">=22" }
+}
