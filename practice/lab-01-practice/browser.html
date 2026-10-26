@@ -1,0 +1,60 @@
+<!doctype html>
+<html lang="uk">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Lab 01: браузерні експерименти</title>
+  <style>
+    body { font: 16px/1.5 system-ui, sans-serif; max-width: 52rem; margin: 2rem auto; padding: 0 1rem; }
+    button, select { font: inherit; margin: 0 .5rem .5rem 0; padding: .4rem .8rem; cursor: pointer; }
+    pre { background: #f3f3f3; padding: .8rem; min-height: 8rem; white-space: pre-wrap; border-radius: 6px; }
+    #hud { min-height: 0; font-size: 15px; }
+    canvas { display: block; width: 100%; max-width: 640px; height: auto; background: #0d1b2a; border-radius: 6px; margin-bottom: 1rem; }
+    @media (prefers-color-scheme: dark) {
+      body { background: #1b1b1b; color: #eee; }
+      pre { background: #2a2a2a; }
+      button, select { background: #333; color: #eee; border: 1px solid #555; border-radius: 4px; }
+    }
+  </style>
+</head>
+<body>
+  <h1>Lab 01: браузерні експерименти</h1>
+  <p>
+    Відкривається подвійним кліком, сервер не потрібен. Усе, що друкується тут, також іде в консоль (F12).
+  </p>
+
+  <h2>Лічильники (§3, §4)</h2>
+  <pre id="hud"></pre>
+  <p>
+    Верхня точка малюється з <code>alpha</code> (<code>lerp(previous, current, alpha)</code>),
+    нижня — просто останній стан симуляції.
+    Крок симуляції:
+    <select id="simHz">
+      <option value="60">60 Hz</option>
+      <option value="20">20 Hz</option>
+      <option value="5">5 Hz</option>
+    </select>
+  </p>
+  <canvas id="arena" width="640" height="120"></canvas>
+
+  <button id="block">заблокувати на 2 с (§2)</button>
+  <button id="raf30">30 кадрів rAF (§3)</button>
+  <button id="interval30">30 тіків setInterval 16 (§3)</button>
+  <button id="thisCheck">this у classic і module (§6)</button>
+  <button id="clear">очистити</button>
+
+  <pre id="out"></pre>
+
+  <!-- §6: код з нотаток, без змін, плюс запам'ятовуємо this для кнопки -->
+  <script>
+    console.log('classic this', this)
+    var classicThis = this
+  </script>
+  <script type="module">
+    console.log('module this', this)
+    window.moduleThis = this
+  </script>
+
+  <script src="browser.js"></script>
+</body>
+</html>

@@ -1,5 +1,7 @@
 # Notes 01 — Event loop і ігровий цикл
 
+Досліди для пари: [`practice/lab-01-practice/`](practice/lab-01-practice/)
+
 Поруч із лабою: [lab-01-event-loop-and-game-loop.md](lab-01-event-loop-and-game-loop.md).
 
 Лаба — **що здати** (корабель, чекліст, тег). Цей файл — **з чим розібратись**: коротка теорія і досліди. Підходить і на парі (шариш консоль), і вдома.

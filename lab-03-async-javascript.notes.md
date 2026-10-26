@@ -1,5 +1,7 @@
 # Notes 03 — Promises і `async`/`await`
 
+Досліди для пари: [`practice/lab-03-practice/`](practice/lab-03-practice/)
+
 Поруч із лабою: [lab-03-async-javascript.md](lab-03-async-javascript.md).
 
 Лаба — **що здати** (екран завантаження, лобі, звук, тег). Цей файл — **з чим розібратись**. Chrome → будь-яка сторінка → F12 → Console. Перед запуском скажи вголос, що очікуєш. Потім звіряй. Якщо `await` нарікає — обгорни: `(async () => { … })()`.

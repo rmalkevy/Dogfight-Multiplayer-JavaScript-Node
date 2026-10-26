@@ -1,5 +1,7 @@
 # Notes 04 — Node: EventEmitter, streams, WebSocket
 
+Досліди для пари: [`practice/lab-04-practice/`](practice/lab-04-practice/)
+
 Поруч із лабою: [lab-04-node-streams-websockets.md](lab-04-node-streams-websockets.md).
 
 Тут уже **термінал + Node**, не консоль вкладки. Той самий JS, інше **середовище** (host): немає DOM, є файли, сокети, `process`. Для backend-вакансій це окремий блок питань.

@@ -1,0 +1,7 @@
+{
+  "name": "lab-01-practice",
+  "private": true,
+  "type": "module",
+  "description": "Експерименти до Lab 01 (event loop, задачі й мікрозадачі, requestAnimationFrame, фіксований крок, замикання, модулі)",
+  "engines": { "node": ">=22" }
+}
