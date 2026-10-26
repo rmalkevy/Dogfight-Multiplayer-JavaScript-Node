@@ -3,5 +3,5 @@
   "private": true,
   "type": "module",
   "description": "Експерименти до Lab 03 (Promise, async/await, fetch, AbortController, події)",
-  "engines": { "node": ">=20" }
+  "engines": { "node": ">=22" }
 }

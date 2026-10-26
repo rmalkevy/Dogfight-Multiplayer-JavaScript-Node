@@ -4,9 +4,9 @@
   "type": "module",
   "description": "Експерименти до Lab 04 (Node: event loop, EventEmitter, Buffer, streams, WebSocket)",
   "engines": {
-    "node": ">=20"
+    "node": ">=22"
   },
   "dependencies": {
-    "ws": "^8.22.0"
+    "ws": "8.22.0"
   }
 }
