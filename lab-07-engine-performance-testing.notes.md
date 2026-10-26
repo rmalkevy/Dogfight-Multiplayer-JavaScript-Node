@@ -48,10 +48,12 @@ flowchart TB
 ## 1. Deopt на очах
 
 ```bash
-node --allow-natives-syntax -e "function add(a,b){return a+b}; for(let i=0;i<1e6;i++) add(i,1); %OptimizeFunctionOnNextCall(add); add(1,2); console.log(%GetOptimizationStatus(add)); add('a','b'); console.log(%GetOptimizationStatus(add))"
+node --allow-natives-syntax -e "function add(a,b){return a+b}; %PrepareFunctionForOptimization(add); for(let i=0;i<1e6;i++) add(i,1); %OptimizeFunctionOnNextCall(add); add(1,2); console.log(%GetOptimizationStatus(add)); add('a','b'); console.log(%GetOptimizationStatus(add))"
 ```
 
 **Очікуй:** статус зміниться після `add('a','b')` — функцію деоптимізували (число + рядок). Розбір бітів: пошукай `GetOptimizationStatus bits`.
+
+`%PrepareFunctionForOptimization` перед `%OptimizeFunctionOnNextCall` — вимога сучасного V8: на Node 26 без нього процес падає з fatal error (на Node 22 ще працює й без нього).
 
 ---
 
@@ -76,7 +78,7 @@ sumX(b)
 console.timeEnd('poly')
 ```
 
-**Очікуй:** `poly` (різні форми об’єктів у масиві) повільніший за `mono` (усі об’єкти з тими самими полями). Далі ті самі `x` у `Float32Array` — зазвичай ще швидше і без об’єктів для GC.
+**Очікуй:** з двома формами, як тут, різниці майже немає: дві-чотири форми V8 кешує майже так само дешево, як одну. Повільно стає від п’яти форм (мегаморфний виклик): у [practice](practice/lab-07-practice/) ~1.3 мс на одній формі проти ~3.9 мс на 8 формах. Далі ті самі `x` у `Float32Array` — зазвичай ще швидше і без об’єктів для GC.
 
 ---
 
@@ -111,10 +113,10 @@ console.log(await once(b, true))
 
 ```js
 // vitest + fast-check у проєкті лаби
-// fc.assert(fc.property(fc.float(), x => Math.fround(x) === x))
+// fc.assert(fc.property(fc.float({ noNaN: true }), x => Math.fround(x) === x))
 ```
 
-`float` (32 біти) часто проходить; `fc.double()` — ні. Бібліотека **звужує** контрприклад (*shrunk*): покаже найменший дріб, на якому твердження бреше.
+`float` (32 біти) проходить; `fc.double()` — ні. Без `noNaN` `fc.float()` генерує й `NaN` і приблизно в кожному п’ятому запуску падає на ньому, бо `NaN === NaN` — `false`: «будь-яке число» включає `NaN`, і property test це знайде. Бібліотека **звужує** контрприклад (*shrunk*): покаже найменший дріб, на якому твердження бреше.
 
 ---
 

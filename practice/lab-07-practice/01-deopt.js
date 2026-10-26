@@ -8,7 +8,7 @@
 //
 // Очікування: після оптимізації статус > 1 (є прапорці оптимізованого коду),
 // після add('a', 'b') статус 1: лишився тільки біт "це функція", функцію викинуто в інтерпретатор.
-// Точне число до deopt залежить від версії V8 (на Node 26: 41).
+// Точне число до deopt залежить від версії V8 (на Node 26: 41, на Node 22: 81).
 // У --trace-deopt: reason: not a Smi — чекали мале ціле, прийшов рядок.
 function add(a, b) {
   return a + b;
@@ -18,8 +18,8 @@ const status = () => {
   return `${s} (0b${s.toString(2)})`;
 };
 
-// У нотатках цього рядка немає. На свіжому V8 без нього Node падає з
-// "should be prepared for optimization with %PrepareFunctionForOptimization".
+// Вимога сучасного V8: на Node 26 без цього рядка Node падає з
+// "should be prepared for optimization with %PrepareFunctionForOptimization" (на Node 22 ще ні).
 %PrepareFunctionForOptimization(add);
 for (let i = 0; i < 1e6; i++) add(i, 1);
 %OptimizeFunctionOnNextCall(add);
