@@ -1,0 +1,13 @@
+{
+  "name": "lab-07-practice",
+  "private": true,
+  "type": "module",
+  "description": "Експерименти до Lab 07 (deopt, форми об'єктів, профіль, transfer у Worker, property test)",
+  "engines": {
+    "node": ">=22"
+  },
+  "devDependencies": {
+    "fast-check": "4.10.2",
+    "vitest": "5.0.5"
+  }
+}

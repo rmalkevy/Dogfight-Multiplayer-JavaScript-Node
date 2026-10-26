@@ -1,5 +1,7 @@
 # Notes 07 — V8, пам’ять, тести
 
+Досліди для пари: [`practice/lab-07-practice/`](practice/lab-07-practice/)
+
 Поруч із лабою: [lab-07-engine-performance-testing.md](lab-07-engine-performance-testing.md).
 
 DevTools (Performance, Memory) + термінал. Цифри записуй *до* оптимізації. Питання «чому гальмує» на співбесіді часто зводяться до GC і форм об’єктів.
