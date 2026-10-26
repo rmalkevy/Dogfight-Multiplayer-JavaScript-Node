@@ -1,0 +1,13 @@
+# Те саме, але CMD у shell-формі, і вивід сервера ще й пишеться у файл через tee.
+#   docker build -f Dockerfile.shell-cmd -t lab08-shell .
+FROM node:22-alpine
+WORKDIR /app
+COPY package.json package-lock.json ./
+RUN npm ci --omit=dev && echo "npm ci виконано"
+COPY . .
+EXPOSE 3008
+# Shell-форма: Docker запускає /bin/sh -c "...". З pipe PID 1 тепер sh, а не node,
+# і SIGTERM від docker stop до node не доходить.
+# Голе CMD node server.js на alpine цього НЕ покаже: sh з однією командою робить exec,
+# і node знову стає PID 1. Так само з "echo ... && node server.js" (див. README).
+CMD node server.js | tee /tmp/server.log

@@ -1,0 +1,10 @@
+{
+  "name": "lab-08-practice",
+  "private": true,
+  "type": "module",
+  "description": "Експерименти до Lab 08 (SIGTERM і graceful shutdown, Docker CMD і кеш шарів, Origin, health під навантаженням)",
+  "engines": { "node": ">=22" },
+  "scripts": {
+    "start": "node server.js"
+  }
+}
