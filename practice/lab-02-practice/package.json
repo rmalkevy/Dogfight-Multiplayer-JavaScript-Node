@@ -1,0 +1,7 @@
+{
+  "name": "lab-02-practice",
+  "private": true,
+  "type": "module",
+  "description": "Експерименти до Lab 02 (прототипи й делегація, this, Map проти об'єкта, extends, генератори)",
+  "engines": { "node": ">=22" }
+}

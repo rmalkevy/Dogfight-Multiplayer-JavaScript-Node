@@ -1,5 +1,7 @@
 # Notes 02 — Об’єкти, `class`, `this`
 
+Досліди для пари: [`practice/lab-02-practice/`](practice/lab-02-practice/)
+
 Поруч із лабою: [lab-02-objects-prototypes-classes.md](lab-02-objects-prototypes-classes.md).
 
 Лаба — **що здати** (сутності, чекліст, тег). Цей файл — **з чим розібратись**. Chrome → F12 → Console. Перед запуском — прогноз уголос.
