@@ -1,0 +1,15 @@
+{
+  // Лише перевірка типів: npx tsc --noEmit. Запуск: npx tsx або node (type stripping).
+  "compilerOptions": {
+    "strict": true,
+    "noEmit": true,
+    "target": "es2023",
+    "module": "nodenext",
+    // DOM лише заради console; @types/node не ставимо, щоб не тягнути залежність
+    "lib": ["es2023", "dom"],
+    // Як у Node: лише ті конструкції TS, які можна просто зрізати (без enum, namespace)
+    "erasableSyntaxOnly": true,
+    "skipLibCheck": true
+  },
+  "include": ["*.ts"]
+}

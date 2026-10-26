@@ -1,0 +1,13 @@
+{
+  "name": "lab-06-practice",
+  "private": true,
+  "type": "module",
+  "description": "Експерименти до Lab 06 (TypeScript: excess property, strict, вичерпність union, unknown на межі, enum проти as const)",
+  "engines": {
+    "node": ">=22"
+  },
+  "devDependencies": {
+    "tsx": "4.23.15",
+    "typescript": "7.0.2"
+  }
+}

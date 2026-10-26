@@ -1,5 +1,7 @@
 # Notes 06 — TypeScript як контракт протоколу
 
+Досліди для пари: [`practice/lab-06-practice/`](practice/lab-06-practice/)
+
 Поруч із лабою: [lab-06-typescript.md](lab-06-typescript.md).
 
 Досліди — у файлі `.ts` + `tsc --strict` (компілятор TypeScript; або Vite). Наводь курсор на типи. На TS-вакансіях питають не синтаксис, а `unknown`, union і «типів на дроті немає».
