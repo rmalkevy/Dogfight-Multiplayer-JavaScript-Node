@@ -69,7 +69,7 @@ The main thread paints; anything heavy on it costs frames. **Web Workers** run J
 2. Two loops: one over `points = Array.from({length: 1e6}, (_, i) => ({ x: i, y: i }))`, another over the same but with every 10th object also having `.z`. Time `sum += p.x`. Then make it `Float32Array`s. Three numbers.
 3. In your game, DevTools → Performance → record 10 s → find the GC blocks. Then Memory → allocation timeline → find the top allocator. Write down both before touching code.
 4. `const w = new Worker(…)`: post a 50 MB `ArrayBuffer` with clone vs. with transfer; time both; check `buffer.byteLength` on the sender after each.
-5. `fc.assert(fc.property(fc.float(), x => Math.fround(x) === x))` — does it pass? Now `fc.double()`. Read the shrunk counterexample.
+5. `fc.assert(fc.property(fc.float({ noNaN: true }), x => Math.fround(x) === x))` — does it pass? (Without `noNaN` the generator will also hand you `NaN`, which is a useful lesson on its own; see the [notes](lab-07-engine-performance-testing.notes.md).) Now `fc.double()`. Read the shrunk counterexample.
 
 ---
 

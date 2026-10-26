@@ -37,7 +37,7 @@ The harder constraint: a WebSocket server is **stateful** — a room lives in *o
 
 ### 3. Docker for a Node workspace
 
-A **multi-stage Dockerfile**: stage 1 (`node:22-alpine` or `-slim`) copies the whole workspace, runs `npm ci`, builds the client with Vite and compiles the server with `tsc` (or keeps `.ts` for native stripping); stage 2 starts from a clean base, copies only `server/dist`, `client/dist`, `shared/dist`, and a **production-only** install (`npm ci --omit=dev` with the workspace flags), sets `NODE_ENV=production`, runs as a **non-root user**, uses `CMD ["node", "server/dist/index.js"]` (exec form — so `SIGTERM` reaches Node, not a shell), and declares a `HEALTHCHECK`. Layer order matters for cache: copy `package*.json` first, install, *then* copy source. `.dockerignore` excludes `node_modules`, `.git`, logs. Target: **an image under 200 MB** — measure it. The Node team's [Docker best practices](https://github.com/nodejs/docker-node/blob/main/docs/BestPractices.md) and Snyk's [10 best practices](https://snyk.io/blog/10-best-practices-to-containerize-nodejs-web-applications-with-docker/) cover the rest (init process, signals, `npm start` vs `node` directly).
+A **multi-stage Dockerfile**: stage 1 (`node:22-alpine` or `-slim`) copies the whole workspace, runs `npm ci`, builds the client with Vite and compiles the server with `tsc` (or keeps `.ts` for native stripping); stage 2 starts from a clean base, copies only `server/dist`, `client/dist`, `shared/dist`, and a **production-only** install (`npm ci --omit=dev` with the workspace flags), sets `NODE_ENV=production`, runs as a **non-root user**, uses `CMD ["node", "server/dist/index.js"]` (exec form — so `SIGTERM` reaches Node, not a shell), and declares a `HEALTHCHECK`. Layer order matters for cache: copy `package*.json` first, install, *then* copy source. `.dockerignore` excludes `node_modules`, `.git`, logs. Modern npm forwards `SIGTERM`, so `npm start` is not the trap it used to be; what still breaks signals is a shell in front of node, e.g. `CMD node server.js | tee app.log` — PID 1 is `sh`, node never hears the signal, and `docker stop` waits out the timeout and sends `SIGKILL` (exit 137). Target: **an image under 200 MB** — measure it. The Node team's [Docker best practices](https://github.com/nodejs/docker-node/blob/main/docs/BestPractices.md) and Snyk's [10 best practices](https://snyk.io/blog/10-best-practices-to-containerize-nodejs-web-applications-with-docker/) cover the rest (init process, signals, `npm start` vs `node` directly).
 
 ### 4. Configuration, secrets, and the twelve factors
 
@@ -66,7 +66,7 @@ Continuous delivery means a **git tag deploys**. Extend Lab 7's GitHub Actions: 
 
 ### Prove it to yourself (terminal, 15 minutes)
 
-1. Run your server; `kill -TERM <pid>`. Does it exit within 5 s with code 0 and do connected clients get a close frame? Now with `CMD npm start` in a container vs `CMD ["node", …]` — `docker stop` and time it (the default grace is 10 s, then `SIGKILL`).
+1. Run your server; `kill -TERM <pid>`. Does it exit within 5 s with code 0 and do connected clients get a close frame? Now with a shell in front of node in a container (`CMD node server.js | tee app.log`) vs `CMD ["node", …]` — `docker stop` and time it (the default grace is 10 s, then `SIGKILL`).
 2. `docker build` twice with a one-line source change; compare build times with `package*.json` copied before vs. after the source. Check the image size with `docker images`.
 3. Point the client at `ws://` from an `https://` page — read the browser's error. That's why WSS is mandatory.
 4. Open a WebSocket to your server from a page on a different origin (`new WebSocket("wss://your.app/ws")` in the console of any site). With no origin check it connects. Add `verifyClient`; retry.
@@ -120,7 +120,7 @@ Get **two people you don't share a network with** to play a match at the same ti
 
 ## Reflection — explain it at the whiteboard
 
-1. Walk through what your process does between receiving `SIGTERM` and exiting. Why does `CMD npm start` break this? Why does ignoring `SIGTERM` drop players?
+1. Walk through what your process does between receiving `SIGTERM` and exiting. Why does a shell-form `CMD` with a pipe (`CMD node server.js | tee app.log`) break this? Why does ignoring `SIGTERM` drop players?
 2. Why is a WebSocket server harder to scale horizontally than a REST API? Describe sticky sessions and the Redis pub/sub design. Which did you ship and why?
 3. Why must the client use `wss://`? Where is TLS terminated in your deployment, and what does that mean for the proxy's WebSocket support and idle timeouts?
 4. CORS doesn't apply to WebSockets — so what stops another site's page from connecting to your server as its visitors? Where do you check it?
