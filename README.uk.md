@@ -69,3 +69,6 @@ TypeScript, а V8, збирач сміття й тести перестають 
 6. [TypeScript](lab-06-typescript.md)
 7. [Engines, Memory, and Tests](lab-07-engine-performance-testing.md)
 8. [Ship It](lab-08-ship-it.md)
+
+Поруч із кожною лабою лежать нотатки українською (`lab-0N-*.notes.md`: теорія і досліди),
+а в [`practice/`](practice/) — досліди, які викладач запускає на парі; їх можна запускати й самому.
